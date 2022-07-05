@@ -19,8 +19,8 @@ class StateOfCharge
 class ChargeRate
 {
   public:
-  const float Lower_Threshold = 0.0F; // In Percentage
-  const float Upper_Threshold = 0.8F; // In Percentage
+  const float Lower_Threshold = 0.0F;
+  const float Upper_Threshold = 0.8F;
 };
 
 #endif
