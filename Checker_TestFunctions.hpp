@@ -28,7 +28,8 @@ bool batteryIsOk(temperature temp, soc State_Of_Charge, chargeRate CRate) {
   bool SOC = ChargeTemp_SOC_CRate_Check<soc, StateOfCharge>(State_Of_Charge, Soc_temp_obj);
   bool Charge_Rate = ChargeTemp_SOC_CRate_Check<chargeRate, ChargeRate>(CRate, CRate_temp_obj);
 
-  if((chargetemp && SOC && Charge_Rate) == true){
+  bool Combined_Check = (chargetemp && SOC && Charge_Rate);
+  if((Combined_Check) == true){
     return true;
   }
   return false;
