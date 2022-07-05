@@ -6,6 +6,12 @@
 #include "Standard_Battery_Specifications.hpp"
 using namespace std;
 
+
+inline bool Combined_Check(bool chargetemp, bool SOC, bool Charge_Rate){
+    bool Check_m = (chargetemp && SOC && Charge_Rate);
+    return Check_m;
+}
+
 template <typename temperature, class Charge_Discharge_SOC_Temp>
 bool ChargeTemp_SOC_CRate_Check(temperature temp_SOC, Charge_Discharge_SOC_Temp ClsName) {
 
@@ -36,10 +42,5 @@ bool batteryIsOk(temperature temp, soc State_Of_Charge, chargeRate CRate) {
   return false;
 }
 
-
-inline bool Combined_Check(bool chargetemp, bool SOC, bool Charge_Rate){
-    bool Check_m = (chargetemp && SOC && Charge_Rate);
-    return Check_m;
-}
 
 #endif
