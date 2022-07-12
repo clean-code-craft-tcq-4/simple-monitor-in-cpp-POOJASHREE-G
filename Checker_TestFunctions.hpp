@@ -19,19 +19,31 @@ inline int Warning_Tolerance(Threshold_Tolerance Thres_tolerance_Cls) {
     return (temp);
 }
 
+template <typename test_thres, class Charge_Discharge_SOC_Temp>
+void IsItApproaching_LowerLimit(test_thres test_treshold, Charge_Discharge_SOC_Temp ClsName, float Warning_tolerance_range) {
+
+    if(test_treshold <= (ClsName.Lower_Threshold + Warning_tolerance_range) && test_treshold >= ClsName.Lower_Threshold) {
+        cout << "Warning: Approaching Lower Limit\n";
+    }
+}
+
+template <typename test_thres, class Charge_Discharge_SOC_Temp>
+void IsItApproaching_UpperLimit(test_thres test_treshold, Charge_Discharge_SOC_Temp ClsName, float Warning_tolerance_range) {
+
+    if (test_treshold <= (ClsName.Upper_Threshold) && test_treshold >= (ClsName.Upper_Threshold  - Warning_tolerance_range))
+    {
+        cout << "Warning: Approaching Upper Limit\n";
+    }
+}
+
 
 template <typename test_thres, class Charge_Discharge_SOC_Temp>
 void Early_Warning(test_thres test_treshold, Charge_Discharge_SOC_Temp ClsName) {
 
     float Warning_tolerance_range = Warning_Tolerance(ClsName);
 
-    if(test_treshold <= (ClsName.Lower_Threshold + Warning_tolerance_range) && test_treshold >= ClsName.Lower_Threshold) {
-        cout << "Warning: Approaching Lower Limit\n";
-    }
-    else if (test_treshold <= (ClsName.Upper_Threshold) && test_treshold >= (ClsName.Upper_Threshold  - Warning_tolerance_range))
-    {
-        cout << "Warning: Approaching Upper Limit\n";
-    }
+    IsItApproaching_LowerLimit(test_treshold, ClsName, Warning_tolerance_range);
+    IsItApproaching_UpperLimit(test_treshold, ClsName, Warning_tolerance_range);
 
 }
 
