@@ -23,4 +23,9 @@ class ChargeRate
   const float Upper_Threshold = 0.8F;
 };
 
+typedef enum {
+  CELSIUS,
+  FAHRENHEIT
+}Temp;
+
 #endif
